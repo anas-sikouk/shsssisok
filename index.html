@@ -1,0 +1,1267 @@
+Voici une version entièrement réécrite, ultra-complète, professionnelle et moderne. Le code est structuré pour atteindre un niveau de production digne d'une agence de développement web, avec de nombreux **effets visuels dynamiques, des animations au survol (hover effects), des transitions fluides, un menu mobile actif, et un design haut de gamme** reprenant fidèlement les couleurs de votre logo (Vert Forêt, Vert Prairie, Or/Ambre et Fond Crème).
+
+Ce code est **100% autonome et complet**. Vous n'avez qu'à le copier-coller dans un seul fichier (par exemple `index.html`).
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison de Campagne - Ferme Pédagogique & Team Building</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. VARIABLES ET THÈME DE COULEURS (Basé sur le Logo officiel)
+           ========================================================================== */
+        :root {
+            --primary-dark: #1e4620;     /* Vert forêt foncé (Texte principal du logo) */
+            --primary-light: #4f7c33;    /* Vert prairie (Herbe du logo) */
+            --accent-gold: #dfa843;     /* Or / Ambre chaleureux (Boutons et accents) */
+            --accent-gold-hover: #c99332;
+            --bg-cream: #fbfaf7;         /* Fond crème très doux pour l'élégance */
+            --bg-cream-dark: #f3efe6;    /* Crème de contraste pour les sections alternées */
+            --white: #ffffff;
+            --dark-text: #2c3e2e;        /* Texte sombre teinté de vert pour l'harmonie */
+            --light-text: #607562;       /* Texte secondaire */
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.03);
+            --shadow-md: 0 10px 25px rgba(30, 70, 32, 0.08);
+            --shadow-lg: 0 20px 40px rgba(30, 70, 32, 0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Transition "mouvante" fluide */
+        }
+
+        /* ==========================================================================
+           2. RÉINITIALISATION ET STYLES DE BASE
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; /* Défilement fluide de la page */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--dark-text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* ==========================================================================
+           3. COMPOSANTS RÉUTILISABLES ET EFFETS ANIMÉS
+           ========================================================================== */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary-light);
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 15px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--light-text);
+            font-weight: 300;
+        }
+
+        /* Boutons avec effet de vague de brillance au survol */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-light);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-gold);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-gold-hover);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-light);
+            color: var(--primary-dark);
+            background-color: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+            color: var(--white);
+        }
+
+        /* Badge Capacité */
+        .badge-capacity {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(79, 124, 51, 0.1);
+            color: var(--primary-dark);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(79, 124, 51, 0.2);
+        }
+
+        /* ==========================================================================
+           4. BARRE DE NAVIGATION ANIMÉE
+           ========================================================================== */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); /* Effet flou moderne sous le menu */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+            background-color: var(--white);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 65px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-img {
+            height: 50px;
+        }
+
+        .logo-text-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo-text-sub {
+            font-size: 0.75rem;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-item a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark-text);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        /* Effet de ligne soulignée magique au survol */
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        .nav-item a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Menu Mobile Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           5. SECTION HERO (ACCUEIL) AVEC EFFETS DE JEUX D'OMBRE & PARALLAXE
+           ========================================================================== */
+        .hero-section {
+            background: linear-gradient(rgba(19, 45, 21, 0.65), rgba(19, 45, 21, 0.45)), url('maison.png') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            background-attachment: fixed; /* Effet parallaxe basique */
+        }
+
+        /* Forme vaporeuse en bas du Hero pour fusionner avec la section suivante */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(transparent, var(--bg-cream));
+        }
+
+        .hero-wrapper {
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-badge-logo {
+            width: 160px;
+            height: 160px;
+            background-color: var(--white);
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+            animation: pulseLogo 3s infinite ease-in-out;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* ==========================================================================
+           6. CARTE D'INTRODUCTION EN DOUBLE FOND (ENTRE-DEUX SECTIONS)
+           ========================================================================== */
+        .intro-section {
+            padding-top: 0;
+            margin-top: -80px;
+            z-index: 20;
+        }
+
+        .intro-card {
+            background-color: var(--white);
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+            border-left: 8px solid var(--primary-light);
+        }
+
+        .intro-content h2 {
+            font-size: 2.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .intro-content p {
+            color: var(--light-text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .intro-illustration {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Badge stylisé et mouvant */
+        .floating-info-box {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 300px;
+            border-bottom: 5px solid var(--accent-gold);
+            animation: floatCard 4s infinite ease-in-out;
+        }
+
+        .floating-info-box i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .floating-info-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .floating-info-box .capacity-count {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           7. SECTION OFFRES (SERVICES) - GRILLE INTERACTIVE PREMIUM
+           ========================================================================== */
+        .offres-section {
+            background-color: var(--bg-cream-dark);
+        }
+
+        .offres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+        }
+
+        .offre-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(30, 70, 32, 0.03);
+        }
+
+        /* Effet zoom et assombrissement de l'image au survol de la carte */
+        .offre-img-wrapper {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .offre-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .offre-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(19, 45, 21, 0.4));
+            opacity: 1;
+            transition: var(--transition);
+        }
+
+        .offre-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .offre-card:hover .offre-img {
+            transform: scale(1.08);
+        }
+
+        .offre-body {
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .offre-body h3 {
+            font-size: 1.45rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .offre-body h3 i {
+            color: var(--primary-light);
+            font-size: 1.2rem;
+        }
+
+        .offre-desc {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .offre-list {
+            list-style: none;
+            margin-top: auto; /* Aligne la liste vers le bas si les textes diffèrent */
+        }
+
+        .offre-list li {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        /* Puces personnalisées élégantes */
+        .offre-list li::before {
+            content: "\f058"; /* Icône Check Circle de FontAwesome */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 1px;
+            color: var(--primary-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .offre-card:hover .offre-list li::before {
+            color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        /* Style spécifique pour la mention "familles uniquement" */
+        .offre-restriction {
+            display: inline-block;
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* ==========================================================================
+           8. SECTION GALERIE - MAÇONNERIE MODERNE ET INTERACTIVE
+           ========================================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Organisation asymétrique pour faire pro */
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            height: 280px;
+            cursor: pointer;
+        }
+
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Rideau d'effet au survol de la galerie */
+        .gallery-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 70, 32, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gallery-hover i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-hover span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            transform: translateY(20px);
+            transition: var(--transition) 0.1s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-hover {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-hover i,
+        .gallery-item:hover .gallery-hover span {
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           9. SECTION CONTACT, INFOS & RESEAUX
+           ========================================================================== */
+        .contact-section {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .contact-section .section-title {
+            color: var(--white);
+        }
+
+        .contact-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .contact-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--accent-gold);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-details h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .contact-cards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 45px;
+        }
+
+        .contact-info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.04);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+
+        .contact-info-card:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .contact-icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .contact-info-content h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-info-content p, .contact-info-content a {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .contact-info-content a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Bloc Réseaux Sociaux */
+        .social-block h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .social-buttons-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.08);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(223, 168, 67, 0.4);
+        }
+
+        /* Bloc de Droite : Localisation interactive Map */
+        .contact-map-block {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .map-box-placeholder {
+            background: linear-gradient(135deg, rgba(79, 124, 51, 0.2), rgba(19, 45, 21, 0.4)), url('maison.png') center center/cover;
+            height: 250px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        .map-box-placeholder i {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            animation: bounceIcon 2s infinite ease-in-out;
+        }
+
+        .map-box-placeholder span {
+            font-weight: 500;
+            background-color: rgba(0,0,0,0.6);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        /* ==========================================================================
+           10. FOOTER (PIED DE PAGE)
+           ========================================================================== */
+        footer {
+            background-color: #112713;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-logo span {
+            color: var(--accent-gold);
+        }
+
+        /* ==========================================================================
+           11. KEYFRAMES ANIMATIONS (EFFETS MOUVANTS)
+           ========================================================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseLogo {
+            0% { transform: scale(1); box-shadow: var(--shadow-lg); }
+            50% { transform: scale(1.04); box-shadow: 0 25px 50px rgba(30, 70, 32, 0.2); }
+            100% { transform: scale(1); box-shadow: var(--shadow-lg); }
+        }
+
+        @keyframes floatCard {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes bounceIcon {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+
+        /* ==========================================================================
+           12. RESPONSIVE DESIGN (ADAPTATION TOUTES TABLETTES & MOBILES)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 3.2rem; }
+            .intro-card { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
+            .intro-illustration { order: -1; }
+            .floating-info-box { max-width: 100%; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item.wide { grid-column: span 1; }
+            .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 70px 0; }
+            .menu-toggle { display: block; }
+            
+            /* Menu mobile coulissant */
+            .nav-menu {
+                position: fixed;
+                top: 89px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 89px);
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 50px 0;
+                gap: 35px;
+                transition: var(--transition);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+
+            header.scrolled .nav-menu {
+                top: 74px;
+                height: calc(100vh - 74px);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-title { font-size: 2.4rem; }
+            .hero-subtitle { font-size: 1.2rem; margin-bottom: 30px; }
+            .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
+            .section-title { font-size: 2.1rem; }
+            .footer-wrapper { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container nav-container">
+            <nav>
+                <a href="#" class="logo-block">
+                    <img src="image_efe5a3.png" alt="Maison de Campagne Logo" class="logo-img">
+                    <div class="logo-text-brand">
+                        <span class="logo-text-title">Maison de Campagne</span>
+                        <span class="logo-text-sub">Ferme Pédagogique</span>
+                    </div>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a href="#domain">Le Domaine</a></li>
+                    <li class="nav-item"><a href="#offres">Nos Offres</a></li>
+                    <li class="nav-item"><a href="#galerie">Galerie</a></li>
+                    <li class="nav-item"><a href="#contact">Contact</a></li>
+                </ul>
+
+                <div class="menu-toggle" id="mobile-menu-btn">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="accueil" class="hero-section">
+        <div class="container hero-wrapper">
+            <img src="image_efe5a3.png" alt="Logo Officiel" class="hero-badge-logo">
+            <h1 class="hero-title">MAISON DE CAMPAGNE</h1>
+            <p class="hero-subtitle">Une expérience unique au cœur de la nature</p>
+            <div class="hero-buttons">
+                <a href="#offres" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Explorer nos offres</a>
+                <a href="#contact" class="btn btn-accent"><i class="fa-solid fa-calendar-check"></i> Réserver en ligne</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="domain" class="intro-section">
+        <div class="container">
+            <div class="intro-card">
+                <div class="intro-content">
+                    <span class="section-tag">Bienvenue au Domaine</span>
+                    <h2>Un havre de paix d’exception</h2>
+                    <p>À seulement 50 minutes de Casablanca, en direction d’Eljadida, Maison de Campagne vous accueille dans un cadre naturel exceptionnel à Bir Jdid. Entre espaces verdoyants, animaux de la ferme et infrastructures conviviales, notre domaine est conçu pour offrir une expérience immersive alliant détente, apprentissage et partage.</p>
+                    <a href="#contact" class="btn btn-outline">Planifier un itinéraire</a>
+                </div>
+                <div class="intro-illustration">
+                    <div class="floating-info-box">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                        <h4>Capacité d’Accueil</h4>
+                        <div class="capacity-count">15 à 120 Personnes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="offres" class="offres-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Sur-Mesure</span>
+                <h2 class="section-title">Nos Prestations & Formules</h2>
+                <p class="section-subtitle">Que ce soit pour le travail, l'école ou les moments précieux en famille, découvrez des activités et infrastructures adaptées à toutes vos envies.</p>
+            </div>
+
+            <div class="offres-grid">
+                
+                <div class="offre-card">
+                    <div class="offre-img-wrapper">
+                        <img src="image_21c3fd.png" alt="Événement Entreprise" class="offre-img">
+                        <div class="offre-overlay"></div>
+                    </div>
+                    <div class="offre-body">
+                        <h3><i class="fa-solid fa-briefcase"></i> Team Building</h3>
+                        <p class="offre-desc">Offrez à vos équipes et à vos clients une parenthèse stimulante hors du cadre professionnel classique.</p>
+                        <ul class="offre-list">
+                            <li>Activités de cohésion et challenges sportifs</li>
+                            <li>Espaces de verdure dédiés au networking</li>
+                            <li>Restauration complète (petit déjeuner & déjeuner beldi ou buffet gourmet)</li>
+                            <li>Cadre naturel idéal pour renforcer durablement les liens</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="offre-card">
+                    <div class="offre-img-wrapper">
+                        <img src="image_21c366.png" alt="Sorties Scolaires" class="offre-img">
+                        <div class="offre-overlay"></div>
+                    </div>
+                    <div class="offre-body">
+                        <h3><i class="fa-solid fa-graduation-cap"></i> Sorties Scolaires</h3>
+                        <p class="offre-desc">Un lieu d'éveil ludique idéal pour apprendre autrement, manipuler et s'ouvrir au monde rural.</p>
+                        <ul class="offre-list">
+                            <li>Découverte guidée et interactive des animaux de la ferme</li>
+                            <li>Ateliers pédagogiques manuels : jardinage, boulangerie, tissage</li>
+                            <li>Activités ludiques en plein air et parcours sportifs</li>
+                            <li>Encadrement et logistique parfaitement adaptés aux enseignants</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="offre-card">
+                    <div class="offre-img-wrapper">
+                        <img src="image_21c097.png" alt="Célébrations" class="offre-img">
+                        <div class="offre-overlay"></div>
+                    </div>
+                    <div class="offre-body">
+                        <h3><i class="fa-solid fa-heart"></i> Mariages & Fêtes</h3>
+                        <p class="offre-desc">Célébrez les moments marquants de votre vie dans un décor authentique, chaleureux et féerique.</p>
+                        <ul class="offre-list">
+                            <li>Organisation et configuration entièrement personnalisables</li>
+                            <li>Espaces modulables adaptés à différents formats d’événements</li>
+                            <li>Animations et encadrement festif pour petits et grands</li>
+                            <li>Ambiance conviviale, authentique et mémorable</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="offre-card">
+                    <div class="offre-img-wrapper">
+                        <img src="image_21c060.png" alt="Location Vacances" class="offre-img">
+                        <div class="offre-overlay"></div>
+                    </div>
+                    <div class="offre-body">
+                        <h3><i class="fa-solid fa-house-chimney-window"></i> Vacances <span class="offre-restriction">Familles uniquement</span></h3>
+                        <p class="offre-desc">Profitez d’un séjour reposant, serein et en toute intimité au cœur de notre écrin sauvage.</p>
+                        <ul class="offre-list">
+                            <li>Maisons campagnardes confortables et parfaitement équipées</li>
+                            <li>Cadre clos, calme et totalement sécurisé pour les enfants</li>
+                            <li>Idéal pour rompre avec le stress urbain en famille</li>
+                            <li>Accès libre et permanent à toutes les activités de la ferme</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="offre-card">
+                    <div class="offre-img-wrapper">
+                        <img src="image_21c39e.png" alt="Sortie Dimanche" class="offre-img">
+                        <div class="offre-overlay"></div>
+                    </div>
+                    <div class="offre-body">
+                        <h3><i class="fa-solid fa-sun"></i> Sortie du Dimanche</h3>
+                        <p class="offre-desc">Passez une journée complète d'évasion dominicale en famille dans une ambiance champêtre festive.</p>
+                        <ul class="offre-list">
+                            <li>Véritable Petit déjeuner beldi copieux dès l'arrivée</li>
+                            <li>Activités ludiques variées, jeux sportifs & balade en calèche</li>
+                            <li>Atelier nourrissage des animaux pour les tout-petits</li>
+                            <li>Déjeuner traditionnel raffiné avec musique & animation conviviale</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Album Photo</span>
+                <h2 class="section-title">Immersion dans notre Domaine</h2>
+                <p class="section-subtitle">Un aperçu de nos installations modernes, de nos espaces détente de prestige et des moments de joie partagés.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item wide">
+                    <img src="maison.png" alt="Extérieur Villa et Piscine">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Extérieur de la Villa & Piscine</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="image_21c342.png" alt="Espace Jeux Trampoline">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Espaces de Loisirs Enfants</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="image_21c01d.png" alt="Service Premium Pool">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Équipe de Restauration Professionnelle</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="mh.png" alt="Intérieur Cuisine Équipée">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Intérieurs Modernes & Équipés</span>
+                    </div>
+                </div>
+                <div class="gallery-item wide">
+                    <img src="image_21c060.png" alt="Espace Tables Réceptions">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Terrasses & Réceptions en Plein Air</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="color: var(--accent-gold);">Réservation & Plan</span>
+                <h2 class="section-title">Planifier un séjour ou un événement</h2>
+                <p class="section-subtitle">Notre équipe se tient à votre entière disposition pour concevoir vos événements corporatifs ou séjours familiaux.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <h3>Restons Connectés</h3>
+                    <div class="contact-cards-list">
+                        
+                        <div class="contact-info-card">
+                            <div class="contact-icon-box">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h4>Téléphone portable</h4>
+                                <p><a href="tel:+212664728367">+212 664 728 367</a></p>
+                                <p><a href="tel:+212772254178">+212 772 254 178</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-icon-box">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h4>Adresse Email</h4>
+                                <p><a href="mailto:maisondecampagne.birjdid@gmail.com">maisondecampagne.birjdid@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-icon-box">
+                                <i class="fa-solid fa-map-pin"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h4>Adresse physique</h4>
+                                <p>Bir Jdid – Douar Laghdira, Maroc</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="social-block">
+                        <h4>Suivez nos aventures au quotidien :</h4>
+                        <div class="social-buttons-container">
+                            <a href="https://www.facebook.com/share/1EyGAE9QDK/?mibextid=wwXIfr" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/maison_de.campagne?igsh=cGVuZGQ1eHdxZjA5&utm_source=qr" target="_blank" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@maison_de.compagne?_r=1&_t=ZS-96vut4NzAbl" target="_blank" class="social-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-map-block">
+                    <div class="map-box-placeholder">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <span>Axe Casablanca - El Jadida</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.6;">
+                        Pour guider facilement vos invités, chauffeurs de bus ou collaborateurs, utilisez notre balise GPS exacte vérifiée sur Google Maps.
+                    </p>
+                    <a href="https://maps.app.goo.gl/XaEg3aX1XL8QaWWo7" target="_blank" class="btn btn-accent">
+                        <i class="fa-solid fa-location-arrow"></i> Lancer l'itinéraire GPS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-wrapper">
+            <div class="footer-logo">
+                Maison de <span>Campagne</span>
+            </div>
+            <p>© 2026 Maison de Campagne - Bir Jdid. Créé avec élégance pour vos moments d'exception.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du menu mobile interactif (ouverture / fermeture)
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-item a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Alterne l'icône entre barres et croix
+            const icon = mobileMenuBtn.querySelector('i');
+            if(navMenu.classList.contains('active')) {
+                icon.className = "fa-solid fa-xmark";
+            } else {
+                icon.className = "fa-solid fa-bars-staggered";
+            }
+        });
+
+        // Fermeture automatique du menu mobile dès qu'on clique sur un lien d'ancrage
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.querySelector('i').className = "fa-solid fa-bars-staggered";
+            });
+        });
+
+        // Effet de changement d'apparence de l'en-tête (Header) au défilement (Scroll effect)
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
+
+```

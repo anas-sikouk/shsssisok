@@ -12,22 +12,22 @@
     
     <style>
         /* ==========================================================================
-           1. VARIABLES ET THÈME DE COULEURS (Basé sur le Logo officiel)
+           1. VARIABLES ET THÈME DE COULEURS
            ========================================================================== */
         :root {
-            --primary-dark: #1e4620;     /* Vert forêt foncé (Texte principal du logo) */
-            --primary-light: #4f7c33;    /* Vert prairie (Herbe du logo) */
-            --accent-gold: #dfa843;     /* Or / Ambre chaleureux (Boutons et accents) */
+            --primary-dark: #1e4620;     /* Vert forêt foncé */
+            --primary-light: #4f7c33;    /* Vert prairie */
+            --accent-gold: #dfa843;     /* Or / Ambre chaleureux */
             --accent-gold-hover: #c99332;
-            --bg-cream: #fbfaf7;         /* Fond crème très doux pour l'élégance */
-            --bg-cream-dark: #f3efe6;    /* Crème de contraste pour les sections alternées */
+            --bg-cream: #fbfaf7;         /* Fond crème très doux */
+            --bg-cream-dark: #f3efe6;    /* Crème de contraste */
             --white: #ffffff;
-            --dark-text: #2c3e2e;        /* Texte sombre teinté de vert pour l'harmonie */
+            --dark-text: #2c3e2e;        /* Texte sombre teinté de vert */
             --light-text: #607562;       /* Texte secondaire */
             --shadow-sm: 0 4px 6px rgba(0,0,0,0.03);
             --shadow-md: 0 10px 25px rgba(30, 70, 32, 0.08);
             --shadow-lg: 0 20px 40px rgba(30, 70, 32, 0.12);
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Transition "mouvante" fluide */
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* ==========================================================================
@@ -37,7 +37,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth; /* Défilement fluide de la page */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -118,7 +118,6 @@
             font-weight: 300;
         }
 
-        /* Boutons avec effet de vague de brillance au survol */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -184,26 +183,12 @@
             color: var(--white);
         }
 
-        /* Badge Capacité */
-        .badge-capacity {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: rgba(79, 124, 51, 0.1);
-            color: var(--primary-dark);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid rgba(79, 124, 51, 0.2);
-        }
-
         /* ==========================================================================
            4. BARRE DE NAVIGATION ANIMÉE
            ========================================================================== */
         header {
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px); /* Effet flou moderne sous le menu */
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -276,7 +261,6 @@
             padding: 5px 0;
         }
 
-        /* Effet de ligne soulignée magique au survol */
         .nav-item a::after {
             content: '';
             position: absolute;
@@ -296,7 +280,6 @@
             color: var(--primary-light);
         }
 
-        /* Menu Mobile Toggle */
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
@@ -305,7 +288,7 @@
         }
 
         /* ==========================================================================
-           5. SECTION HERO (ACCUEIL) AVEC EFFETS DE JEUX D'OMBRE & PARALLAXE
+           5. SECTION HERO (ACCUEIL)
            ========================================================================== */
         .hero-section {
             background: linear-gradient(rgba(19, 45, 21, 0.65), rgba(19, 45, 21, 0.45)), url('maison.png') no-repeat center center/cover;
@@ -316,10 +299,9 @@
             text-align: center;
             color: var(--white);
             position: relative;
-            background-attachment: fixed; /* Effet parallaxe basique */
+            background-attachment: fixed;
         }
 
-        /* Forme vaporeuse en bas du Hero pour fusionner avec la section suivante */
         .hero-section::after {
             content: '';
             position: absolute;
@@ -347,6 +329,7 @@
             box-shadow: var(--shadow-lg);
             margin-bottom: 30px;
             animation: pulseLogo 3s infinite ease-in-out;
+            object-fit: contain;
         }
 
         .hero-title {
@@ -373,7 +356,7 @@
         }
 
         /* ==========================================================================
-           6. CARTE D'INTRODUCTION EN DOUBLE FOND (ENTRE-DEUX SECTIONS)
+           6. CARTE D'INTRODUCTION
            ========================================================================== */
         .intro-section {
             padding-top: 0;
@@ -412,7 +395,6 @@
             justify-content: center;
         }
 
-        /* Badge stylisé et mouvant */
         .floating-info-box {
             background-color: var(--primary-dark);
             color: var(--white);
@@ -446,7 +428,7 @@
         }
 
         /* ==========================================================================
-           7. SECTION OFFRES (SERVICES) - GRILLE INTERACTIVE PREMIUM
+           7. SECTION OFFRES (SERVICES)
            ========================================================================== */
         .offres-section {
             background-color: var(--bg-cream-dark);
@@ -469,7 +451,6 @@
             border: 1px solid rgba(30, 70, 32, 0.03);
         }
 
-        /* Effet zoom et assombrissement de l'image au survol de la carte */
         .offre-img-wrapper {
             position: relative;
             height: 250px;
@@ -533,7 +514,7 @@
 
         .offre-list {
             list-style: none;
-            margin-top: auto; /* Aligne la liste vers le bas si les textes diffèrent */
+            margin-top: auto;
         }
 
         .offre-list li {
@@ -545,9 +526,8 @@
             line-height: 1.4;
         }
 
-        /* Puces personnalisées élégantes */
         .offre-list li::before {
-            content: "\f058"; /* Icône Check Circle de FontAwesome */
+            content: "\f058";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
@@ -563,7 +543,6 @@
             transform: scale(1.1);
         }
 
-        /* Style spécifique pour la mention "familles uniquement" */
         .offre-restriction {
             display: inline-block;
             background-color: #fff3cd;
@@ -579,84 +558,7 @@
         }
 
         /* ==========================================================================
-           8. SECTION GALERIE - MAÇONNERIE MODERNE ET INTERACTIVE
-           ========================================================================== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        /* Organisation asymétrique pour faire pro */
-        .gallery-item {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            height: 280px;
-            cursor: pointer;
-        }
-
-        .gallery-item.wide {
-            grid-column: span 2;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        /* Rideau d'effet au survol de la galerie */
-        .gallery-hover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(30, 70, 32, 0.85);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--white);
-            opacity: 0;
-            transition: var(--transition);
-            padding: 20px;
-            text-align: center;
-        }
-
-        .gallery-hover i {
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            margin-bottom: 10px;
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .gallery-hover span {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            transform: translateY(20px);
-            transition: var(--transition) 0.1s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item:hover .gallery-hover {
-            opacity: 1;
-        }
-
-        .gallery-item:hover .gallery-hover i,
-        .gallery-item:hover .gallery-hover span {
-            transform: translateY(0);
-        }
-
-        /* ==========================================================================
-           9. SECTION CONTACT, INFOS & RESEAUX
+           8. SECTION CONTACT, INFOS & RESEAUX
            ========================================================================== */
         .contact-section {
             background-color: var(--primary-dark);
@@ -752,7 +654,6 @@
             color: var(--accent-gold);
         }
 
-        /* Bloc Réseaux Sociaux */
         .social-block h4 {
             font-size: 1.1rem;
             margin-bottom: 15px;
@@ -785,7 +686,6 @@
             box-shadow: 0 5px 15px rgba(223, 168, 67, 0.4);
         }
 
-        /* Bloc de Droite : Localisation interactive Map */
         .contact-map-block {
             background-color: rgba(255, 255, 255, 0.03);
             padding: 40px;
@@ -824,7 +724,7 @@
         }
 
         /* ==========================================================================
-           10. FOOTER (PIED DE PAGE)
+           9. FOOTER
            ========================================================================== */
         footer {
             background-color: #112713;
@@ -852,17 +752,11 @@
         }
 
         /* ==========================================================================
-           11. KEYFRAMES ANIMATIONS (EFFETS MOUVANTS)
+           10. ANIMATIONS KEYFRAMES
            ========================================================================== */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulseLogo {
@@ -883,17 +777,14 @@
             100% { transform: translateY(0); }
         }
 
-
         /* ==========================================================================
-           12. RESPONSIVE DESIGN (ADAPTATION TOUTES TABLETTES & MOBILES)
+           11. RESPONSIVE DESIGN
            ========================================================================== */
         @media (max-width: 1024px) {
             .hero-title { font-size: 3.2rem; }
             .intro-card { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
             .intro-illustration { order: -1; }
             .floating-info-box { max-width: 100%; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-item.wide { grid-column: span 1; }
             .contact-grid { grid-template-columns: 1fr; gap: 50px; }
         }
 
@@ -901,7 +792,6 @@
             section { padding: 70px 0; }
             .menu-toggle { display: block; }
             
-            /* Menu mobile coulissant */
             .nav-menu {
                 position: fixed;
                 top: 89px;
@@ -921,10 +811,7 @@
                 height: calc(100vh - 74px);
             }
 
-            .nav-menu.active {
-                left: 0;
-            }
-
+            .nav-menu.active { left: 0; }
             .hero-title { font-size: 2.4rem; }
             .hero-subtitle { font-size: 1.2rem; margin-bottom: 30px; }
             .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
@@ -939,7 +826,7 @@
         <div class="container nav-container">
             <nav>
                 <a href="#" class="logo-block">
-                    <img src="image_efe5a3.png" alt="Maison de Campagne Logo" class="logo-img">
+                    <img src="LIEN_VERS_VOTRE_LOGO.png" alt="Maison de Campagne Logo" class="logo-img">
                     <div class="logo-text-brand">
                         <span class="logo-text-title">Maison de Campagne</span>
                         <span class="logo-text-sub">Ferme Pédagogique</span>
@@ -950,7 +837,6 @@
                     <li class="nav-item"><a href="#accueil">Accueil</a></li>
                     <li class="nav-item"><a href="#domain">Le Domaine</a></li>
                     <li class="nav-item"><a href="#offres">Nos Offres</a></li>
-                    <li class="nav-item"><a href="#galerie">Galerie</a></li>
                     <li class="nav-item"><a href="#contact">Contact</a></li>
                 </ul>
 
@@ -963,7 +849,7 @@
 
     <section id="accueil" class="hero-section">
         <div class="container hero-wrapper">
-            <img src="image_efe5a3.png" alt="Logo Officiel" class="hero-badge-logo">
+            <img src="LIEN_VERS_VOTRE_LOGO.png" alt="Logo Officiel" class="hero-badge-logo">
             <h1 class="hero-title">MAISON DE CAMPAGNE</h1>
             <p class="hero-subtitle">Une expérience unique au cœur de la nature</p>
             <div class="hero-buttons">
@@ -1056,6 +942,40 @@
 
                 <div class="offre-card">
                     <div class="offre-img-wrapper">
+                        <img src="LIEN_VERS_PHOTO_LOCATION.png" alt="Maison des Événements" class="offre-img">
+                        <div class="offre-overlay"></div>
+                    </div>
+                    <div class="offre-body">
+                        <h3><i class="fa-solid fa-building-user"></i> Maison des Événements</h3>
+                        <p class="offre-desc">Louez notre splendide structure couverte et modulable pour tous vos grands rassemblements privatifs ou professionnels.</p>
+                        <ul class="offre-list">
+                            <li>Grande salle d'une capacité modulable et lumineuse</li>
+                            <li>Équipements sonores et logistiques haut de gamme disponibles</li>
+                            <li>Idéal pour séminaires, conférences ou réceptions privées</li>
+                            <li>Accès direct sur les terrasses et jardins extérieurs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="offre-card">
+                    <div class="offre-img-wrapper">
+                        <img src="LIEN_VERS_PHOTO_RESTAURATION.png" alt="Service Restauration" class="offre-img">
+                        <div class="offre-overlay"></div>
+                    </div>
+                    <div class="offre-body">
+                        <h3><i class="fa-solid fa-utensils"></i> Restauration Beldi & Gourmet</h3>
+                        <p class="offre-desc">Savourez une cuisine authentique préparée à base de produits frais et locaux pour sublimer vos événements.</p>
+                        <ul class="offre-list">
+                            <li>Petits déjeuners traditionnels « Beldi » copieux</li>
+                            <li>Buffets gourmets ou dîners assis raffinés faits maison</li>
+                            <li>Menus entièrement personnalisables selon vos régimes et envies</li>
+                            <li>Service professionnel complet assuré par notre brigade dédiée</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="offre-card">
+                    <div class="offre-img-wrapper">
                         <img src="image_21c060.png" alt="Location Vacances" class="offre-img">
                         <div class="offre-overlay"></div>
                     </div>
@@ -1088,54 +1008,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <section id="galerie">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Album Photo</span>
-                <h2 class="section-title">Immersion dans notre Domaine</h2>
-                <p class="section-subtitle">Un aperçu de nos installations modernes, de nos espaces détente de prestige et des moments de joie partagés.</p>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item wide">
-                    <img src="maison.png" alt="Extérieur Villa et Piscine">
-                    <div class="gallery-hover">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i>
-                        <span>Extérieur de la Villa & Piscine</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="image_21c342.png" alt="Espace Jeux Trampoline">
-                    <div class="gallery-hover">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i>
-                        <span>Espaces de Loisirs Enfants</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="image_21c01d.png" alt="Service Premium Pool">
-                    <div class="gallery-hover">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i>
-                        <span>Équipe de Restauration Professionnelle</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="mh.png" alt="Intérieur Cuisine Équipée">
-                    <div class="gallery-hover">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i>
-                        <span>Intérieurs Modernes & Équipés</span>
-                    </div>
-                </div>
-                <div class="gallery-item wide">
-                    <img src="image_21c060.png" alt="Espace Tables Réceptions">
-                    <div class="gallery-hover">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i>
-                        <span>Terrasses & Réceptions en Plein Air</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1222,14 +1094,12 @@
     </footer>
 
     <script>
-        // Gestion du menu mobile interactif (ouverture / fermeture)
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-item a');
 
         mobileMenuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            // Alterne l'icône entre barres et croix
             const icon = mobileMenuBtn.querySelector('i');
             if(navMenu.classList.contains('active')) {
                 icon.className = "fa-solid fa-xmark";
@@ -1238,7 +1108,6 @@
             }
         });
 
-        // Fermeture automatique du menu mobile dès qu'on clique sur un lien d'ancrage
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -1246,7 +1115,6 @@
             });
         });
 
-        // Effet de changement d'apparence de l'en-tête (Header) au défilement (Scroll effect)
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1259,4 +1127,3 @@
 </body>
 </html>
 
-```
